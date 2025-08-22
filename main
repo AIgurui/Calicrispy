@@ -1,0 +1,577 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cali Crispy - Pakistan's First Spicy Dipped Chicken Burger</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="80" r="3" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="90" cy="30" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="10" cy="90" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
+        }
+
+        .hero-content {
+            z-index: 2;
+            position: relative;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff6b35;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: slideInUp 1s ease-out;
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            opacity: 0.9;
+            animation: slideInUp 1s ease-out 0.2s both;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.8;
+            animation: slideInUp 1s ease-out 0.4s both;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #ff6b35;
+            padding: 18px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            animation: slideInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            background: #f8f8f8;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features {
+            background: #f8f9fa;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .spice-levels {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+        }
+
+        .spice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .spice-card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .spice-card:hover {
+            background: rgba(255,255,255,0.2);
+            transform: scale(1.05);
+        }
+
+        .spice-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .spice-meter {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin: 15px 0;
+        }
+
+        .spice-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+        }
+
+        .spice-dot.active {
+            background: #fff;
+        }
+
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .burger-showcase {
+            width: 100%;
+            max-width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(255,107,53,0.3);
+            animation: rotate 10s infinite linear;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .coming-soon {
+            background: #333;
+            color: white;
+            text-align: center;
+        }
+
+        .coming-soon h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .launch-date {
+            font-size: 1.5rem;
+            color: #ff6b35;
+            margin-bottom: 40px;
+        }
+
+        .notify-form {
+            max-width: 400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 15px;
+        }
+
+        .notify-input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+
+        .notify-button {
+            background: #ff6b35;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .notify-button:hover {
+            background: #e55a2b;
+        }
+
+        .footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #ff6b35;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .notify-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="logo">CC</div>
+            <h1>CALI CRISPY</h1>
+            <div class="tagline">Pakistan's First Spicy Dipped Chicken Burger</div>
+            <div class="subtitle">Coming Soon to Islamabad</div>
+            <a href="#notify" class="cta-button">Get Notified First</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section features">
+        <div class="container">
+            <h2 class="section-title">Why Cali Crispy?</h2>
+            <p class="section-subtitle">We're bringing a revolutionary spicy chicken experience to Pakistan with fresh ingredients and bold flavors</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔥</div>
+                    <h3>Fresh Every Time</h3>
+                    <p>Never frozen, always fresh. Each burger is made to order with the finest halal chicken and premium ingredients.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌶️</div>
+                    <h3>Your Spice Level</h3>
+                    <p>From mild to mouth-blazing! Choose your heat level - we've got something for everyone in the family.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Affordable Premium</h3>
+                    <p>Gourmet quality at local prices. Everyone deserves to enjoy exceptional food without breaking the bank.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spice Levels Section -->
+    <section class="section spice-levels">
+        <div class="container">
+            <h2 class="section-title">Choose Your Heat</h2>
+            <p class="section-subtitle">How spicy do you dare to go?</p>
+            
+            <div class="spice-grid">
+                <div class="spice-card">
+                    <h3>🥛 Mild</h3>
+                    <div class="spice-meter">
+                        <div class="spice-dot active"></div>
+                        <div class="spice-dot"></div>
+                        <div class="spice-dot"></div>
+                        <div class="spice-dot"></div>
+                        <div class="spice-dot"></div>
+                    </div>
+                    <p>Perfect for beginners and kids. Just a hint of spice.</p>
+                </div>
+                
+                <div class="spice-card">
+                    <h3>🌶️ Medium Drizzle</h3>
+                    <div class="spice-meter">
+                        <div class="spice-dot active"></div>
+                        <div class="spice-dot active"></div>
+                        <div class="spice-dot active"></div>
+                        <div class="spice-dot"></div>
+                        <div class="spice-dot"></div>
+                    </div>
+                    <p>A nice kick that builds up. Most popular choice!</p>
+                </div>
+                
+                <div class="spice-card">
+                    <h3>🔥 Half Dipped</h3>
+                    <div class="spice-meter">
+                        <div class="spice-dot active"></div>
+                        <div class="spice-dot active"></div>
+                        <div class="spice-dot active"></div>
+                        <div class="spice-dot active"></div>
+                        <div class="spice-dot"></div>
+                    </div>
+                    <p>For spice lovers. Serious heat that packs a punch.</p>
+                </div>
+                
+                <div class="spice-card">
+                    <h3>💀 Full Blazing</h3>
+                    <div class="spice-meter">
+                        <div class="spice-dot active"></div>
+                        <div class="spice-dot active"></div>
+                        <div class="spice-dot active"></div>
+                        <div class="spice-dot active"></div>
+                        <div class="spice-dot active"></div>
+                    </div>
+                    <p>Only for the brave! Our signature extreme heat level.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Spicy Revolution Starts Here</h2>
+                    <p>Cali Crispy is bringing Pakistan's first authentic spicy dipped chicken burger experience to Islamabad. Inspired by global flavors but crafted for Pakistani taste buds.</p>
+                    <p>Our secret recipe combines traditional spices with modern cooking techniques, creating a burger experience like no other. Every bite is an explosion of flavor that will keep you coming back for more.</p>
+                    <p>From our family kitchen to your table - we're passionate about creating food that brings people together and creates unforgettable moments.</p>
+                </div>
+                <div class="about-image">
+                    <div class="burger-showcase">🍔</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section class="section coming-soon" id="notify">
+        <div class="container">
+            <h2>Coming Soon!</h2>
+            <div class="launch-date">Launching December 2025 in Islamabad</div>
+            <p>Be the first to experience Pakistan's spiciest burger revolution!</p>
+            <br>
+            <form class="notify-form">
+                <input type="email" class="notify-input" placeholder="Enter your email" required>
+                <button type="submit" class="notify-button">Notify Me</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Cali Crispy. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" onclick="alert('Coming soon!')">Instagram</a>
+                <a href="#" onclick="alert('Coming soon!')">Facebook</a>
+                <a href="#" onclick="alert('Coming soon!')">TikTok</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Email notification form
+        document.querySelector('.notify-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('.notify-input').value;
+            alert(`Thanks! We'll notify ${email} when Cali Crispy launches in Islamabad!`);
+            this.reset();
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.feature-card, .spice-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
